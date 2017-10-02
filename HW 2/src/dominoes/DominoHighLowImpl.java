@@ -2,35 +2,37 @@ package dominoes;
 
 import java.util.Set;
 
-public class DominoHighLowImpl implements Domino{
+public class DominoHighLowImpl implements Domino {
     private int highPipCount;
     private int lowPipCount;
 
     public DominoHighLowImpl(int highPipCount, int lowPipCount) {
-        this.highPipCount = highPipCount;
-        this.lowPipCount = lowPipCount;
+        if ((highPipCount <= MAXIMUM_PIP_COUNT) && (lowPipCount >= MINIMUM_PIP_COUNT)) {
+            this.highPipCount = highPipCount;
+            this.lowPipCount = lowPipCount;
+        }
     }
 
     public static final char HIGH_LOW_SEPARATOR = ':';
 
-    public static boolean isHighLowString(String str){
+    public static boolean isHighLowString(String str) {
         int separatorIndex = str.indexOf(HIGH_LOW_SEPARATOR);
 
-        String highString = str.substring(0,separatorIndex);
-        String lowString = str.substring(separatorIndex+1);
+        String highString = str.substring(0, separatorIndex);
+        String lowString = str.substring(separatorIndex + 1);
 
         int highInt = Integer.parseInt(highString);
         int lowInt = Integer.parseInt(lowString);
 
-        return(highInt >= lowInt);
+        return (highInt >= lowInt);
 
     }
 
-    public DominoHighLowImpl(String highLowString){
+    public DominoHighLowImpl(String highLowString) {
         int separatorIndex = highLowString.indexOf(HIGH_LOW_SEPARATOR);
 
-        String highString = highLowString.substring(0,separatorIndex);
-        String lowString = highLowString.substring(separatorIndex+1);
+        String highString = highLowString.substring(0, separatorIndex);
+        String lowString = highLowString.substring(separatorIndex + 1);
 
         highPipCount = Integer.parseInt(highString);
         lowPipCount = Integer.parseInt(lowString);
@@ -40,24 +42,25 @@ public class DominoHighLowImpl implements Domino{
     public static final int INDEX_OF_SUM = 0;
     public static final int INDEX_OF_DIFFERENCE = 1;
 
-    public DominoHighLowImpl(int[] sumDifference){
+    public DominoHighLowImpl(int[] sumDifference) {
         int sum = sumDifference[INDEX_OF_SUM];
         int difference = sumDifference[INDEX_OF_DIFFERENCE];
 
-        //High Plus Low = sum
-        //High - Low = difference
+        int doubleMystery = sum + difference;
 
+        int numberOne = doubleMystery / 2;
+        int numberTwo = numberOne - difference;
 
-
-
+        this.highPipCount = numberOne;
+        this.lowPipCount = numberTwo;
 
     }
 
-    public DominoHighLowImpl(Set<Integer> highLowSet){
+    public DominoHighLowImpl(Set<Integer> highLowSet) {
         Integer[] highLowArray = highLowSet.toArray(new Integer[highLowSet.size()]);
 
 
-        if(highLowArray.length > 1) {
+        if (highLowArray.length > 1) {
 
             int valueOne = highLowArray[0];
             int valueTwo = highLowArray[1];
@@ -78,21 +81,13 @@ public class DominoHighLowImpl implements Domino{
     }
 
 
-
-
-
-    public int getLowPipCount(){
+    public int getLowPipCount() {
         return lowPipCount;
     }
 
-    public int getHighPipCount(){
+    public int getHighPipCount() {
         return highPipCount;
     }
-
-
-
-
-
 
 
 }

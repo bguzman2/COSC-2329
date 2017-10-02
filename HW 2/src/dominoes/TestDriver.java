@@ -39,6 +39,23 @@ public class TestDriver {
         System.out.println(dominoSetImplTwo.getLowPipCount());
 
 
+        //4
+
+        int[] array = {12,0};
+        int[] arrayTwo = {3,1};
+        Domino dominoSumDifferenceImpl = new DominoHighLowImpl(array);
+
+        System.out.println(dominoSumDifferenceImpl.getHighPipCount());
+        System.out.println(dominoSumDifferenceImpl.getLowPipCount());
+
+        Domino dominoSumDifferenceImplTwo = new DominoHighLowImpl(arrayTwo);
+        System.out.println(dominoSumDifferenceImplTwo.getHighPipCount());
+        System.out.println(dominoSumDifferenceImplTwo.getLowPipCount());
+
+
+
+
+
 
 
     }
