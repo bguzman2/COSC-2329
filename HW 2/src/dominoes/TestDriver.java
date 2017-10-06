@@ -56,6 +56,25 @@ public class TestDriver {
 
 
 
+        //5
+
+
+
+        Domino dominoSumDifferenceSetImpl = new DominoHighLowSetImpl(6, 3);
+        System.out.println(dominoSumDifferenceSetImpl.getHighPipCount());
+        System.out.println(dominoSumDifferenceSetImpl.getLowPipCount());
+
+
+        //6
+
+        Domino dominoSumDifference8PlusImpl = new DominoHighLowSetImpl(43);
+        System.out.println(dominoSumDifference8PlusImpl.getHighPipCount());
+        System.out.println(dominoSumDifference8PlusImpl.getLowPipCount());
+
+
+
+
+
 
 
     }
