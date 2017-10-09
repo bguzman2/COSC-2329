@@ -20,12 +20,31 @@ public class DominoLowDifferenceStringImpl implements Domino{
 
     public int getLowPipCount(){
 
+        int delimiterIndex = lowDifferenceString.indexOf(LOW_DIFFERENCE_DELIMITER);
 
-        return 5;
+        String lowString = lowDifferenceString.substring(0,delimiterIndex);
+        String differenceString = lowDifferenceString.substring(delimiterIndex+1);
+
+        int low = Integer.parseInt(lowString);
+
+        return low;
     }
 
     public int getHighPipCount(){
-        return 5;
+
+
+        int delimiterIndex = lowDifferenceString.indexOf(LOW_DIFFERENCE_DELIMITER);
+
+        String lowString = lowDifferenceString.substring(0,delimiterIndex);
+        String differenceString = lowDifferenceString.substring(delimiterIndex+1);
+
+        int low = Integer.parseInt(lowString);
+        int difference = Integer.parseInt(differenceString);
+
+        int high = low + difference;
+
+
+        return high;
     }
 
 

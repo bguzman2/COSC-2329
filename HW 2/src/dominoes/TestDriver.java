@@ -72,7 +72,11 @@ public class TestDriver {
         System.out.println(dominoSumDifference8PlusImpl.getLowPipCount());
 
 
+        //7
 
+        Domino dominoLowDifferenceStringImpl = new DominoLowDifferenceStringImpl(43);
+        System.out.println(dominoLowDifferenceStringImpl.getHighPipCount());
+        System.out.println(dominoLowDifferenceStringImpl.getLowPipCount());
 
 
 
