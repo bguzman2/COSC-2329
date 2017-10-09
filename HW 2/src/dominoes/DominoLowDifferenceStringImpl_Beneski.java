@@ -1,11 +1,13 @@
 package dominoes;
 
-public class DominoLowDifferenceStringImpl implements Domino{
+import java.util.List;
+
+public class DominoLowDifferenceStringImpl_Beneski implements Domino{
 
     private String lowDifferenceString;
     private static final char LOW_DIFFERENCE_DELIMITER = '*';
 
-    public DominoLowDifferenceStringImpl(int lowPlus8TimesHigh){
+    public DominoLowDifferenceStringImpl_Beneski(int lowPlus8TimesHigh){
 
         int low = (lowPlus8TimesHigh % 8);
 
@@ -13,9 +15,23 @@ public class DominoLowDifferenceStringImpl implements Domino{
 
         int difference = high - low;
 
-        lowDifferenceString = low + "*" + difference;
+        lowDifferenceString = low + String.valueOf(LOW_DIFFERENCE_DELIMITER) + difference;
     }
 
+    public static final int INDEX_OF_HIGH = 0;
+    public static final int INDEX_OF_SUM = 1;
+
+    public DominoLowDifferenceStringImpl_Beneski(List<Integer> highSum){
+
+        int high = highSum.get(INDEX_OF_HIGH);
+        int sum = highSum.get(INDEX_OF_SUM);
+        int low = sum - high;
+        int difference = high - low;
+
+
+        lowDifferenceString = low + String.valueOf(LOW_DIFFERENCE_DELIMITER) + difference;
+
+    }
 
 
     public int getLowPipCount(){

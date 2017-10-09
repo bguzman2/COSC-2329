@@ -2,11 +2,11 @@ package dominoes;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DominoHighLowSetImpl implements Domino{
+public class DominoHighLowSetImpl_Beneski implements Domino{
 
     private Set<Integer> highLowSet;
 
-    public DominoHighLowSetImpl(int highPipCount, int lowPipCount){
+    public DominoHighLowSetImpl_Beneski(int highPipCount, int lowPipCount){
 
         highLowSet = new HashSet<>();
 
@@ -36,7 +36,7 @@ public class DominoHighLowSetImpl implements Domino{
 
     }
 
-    public DominoHighLowSetImpl(String sumDifferenceString){
+    public DominoHighLowSetImpl_Beneski(String sumDifferenceString){
 
         highLowSet = new HashSet<>();
 
@@ -69,7 +69,7 @@ public class DominoHighLowSetImpl implements Domino{
         return true;
     }
 
-    public DominoHighLowSetImpl(int lowPlus8TimesHigh){
+    public DominoHighLowSetImpl_Beneski(int lowPlus8TimesHigh){
 
         highLowSet = new HashSet<>();
 
@@ -85,16 +85,20 @@ public class DominoHighLowSetImpl implements Domino{
     public int getLowPipCount(){
 
         Integer[] highLowArray = highLowSet.toArray(new Integer[highLowSet.size()]);
-
-        int valueOne = highLowArray[0];
-        int valueTwo = highLowArray[1];
-
         int returnValue;
 
-        if(valueOne >= valueTwo){
-            returnValue = valueTwo;
+        if(highLowSet.size() > 1) {
+            int valueOne = highLowArray[0];
+            int valueTwo = highLowArray[1];
+
+
+            if (valueOne >= valueTwo) {
+                returnValue = valueTwo;
+            } else {
+                returnValue = valueOne;
+            }
         } else {
-            returnValue = valueOne;
+            returnValue = highLowArray[0];
         }
 
         return returnValue;
@@ -102,20 +106,26 @@ public class DominoHighLowSetImpl implements Domino{
     }
 
     public int getHighPipCount(){
-
         Integer[] highLowArray = highLowSet.toArray(new Integer[highLowSet.size()]);
-
-        int valueOne = highLowArray[0];
-        int valueTwo = highLowArray[1];
 
         int returnValue;
 
-        if(valueOne <= valueTwo){
-            returnValue = valueTwo;
-        } else{
-            returnValue = valueOne;
-        }
+        if(highLowSet.size() > 1) {
 
+
+            int valueOne = highLowArray[0];
+            int valueTwo = highLowArray[1];
+
+
+            if (valueOne <= valueTwo) {
+                returnValue = valueTwo;
+            } else {
+                returnValue = valueOne;
+            }
+
+        } else{
+            returnValue = highLowArray[0];
+        }
         return returnValue;
     }
 }
