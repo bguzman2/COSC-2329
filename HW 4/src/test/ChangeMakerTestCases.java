@@ -224,14 +224,27 @@ public class ChangeMakerTestCases
 	@Test
 	public void canMakeExactChange_10E8_ETC__123456789()
 	{
-		fail("Student needs to add code");
+		Set<Integer> denominationSet = getDenominationSet(new Integer[]{100000000,10000000,1000000,100000,10000,1000,100,10,1});
+		int valueInCents = 123456789;
+		TEST_GOAL_MESSAGE = "Test " + getPrettyString(denominationSet) + ".canMakeExactChange(" + valueInCents + ")";
+		changeMaker_STUDENT = getChangeMaker(denominationSet);
+
+		assertTrue("ChangeMaker should be able to make change for " + valueInCents, changeMaker_STUDENT.canMakeExactChange(valueInCents));
 	}
 	
 	@Points(value=5)
 	@Test
 	public void getExactChange_10E8_ETC__123456789()
 	{
-		fail("Student needs to add code");
+		Set<Integer> denominationSet = getDenominationSet(new Integer[]{100000000,10000000,1000000,100000,10000,1000,100,10,1});
+		int valueInCents = 123456789;
+
+		TEST_GOAL_MESSAGE = "Test " + getPrettyString(denominationSet) + ".getExactChange(" + valueInCents + ")";
+		changeMaker_STUDENT = getChangeMaker(denominationSet);
+
+		List<Integer> changeList = changeMaker_STUDENT.getExactChange(valueInCents);
+		List<Integer> correctChangeList = Arrays.asList(new Integer[]{1,2,3,4,5,6,7,8,9});
+		assertEquals("Calculated changeList disagrees with expected!", correctChangeList, changeList);
 	}
 	
 	@Points(value=5)
@@ -262,7 +275,15 @@ public class ChangeMakerTestCases
 	@Test
 	public void getExactChange_144_89_55_34_21_13_8_5_3_2_1__201()
 	{
-		fail("Student needs to add code");
+		Set<Integer> denominationSet = getDenominationSet(new Integer[]{144,89,55,34,21,13,8,5,3,2,1});
+		int valueInCents = 201;
+
+		TEST_GOAL_MESSAGE = "Test " + getPrettyString(denominationSet) + ".getExactChange(" + valueInCents + ")";
+		changeMaker_STUDENT = getChangeMaker(denominationSet);
+
+		List<Integer> changeList = changeMaker_STUDENT.getExactChange(valueInCents);
+		List<Integer> correctChangeList = Arrays.asList(new Integer[]{1,0,1,0,0,0,0,0,0,1,0});
+		assertEquals("Calculated changeList disagrees with expected!", correctChangeList, changeList);
 	}
 	
 	@Points(value=5)
@@ -281,7 +302,15 @@ public class ChangeMakerTestCases
 	@Test
 	public void getExactChange_16777216_ETC__88888888()
 	{
-		fail("Student needs to add code");
+		Set<Integer> denominationSet = getDenominationSet(new Integer[]{16777216,2097152,262144,32768,4096,512,64,8,1});
+		int valueInCents = 88888888;
+
+		TEST_GOAL_MESSAGE = "Test " + getPrettyString(denominationSet) + ".getExactChange(" + valueInCents + ")";
+		changeMaker_STUDENT = getChangeMaker(denominationSet);
+
+		List<Integer> changeList = changeMaker_STUDENT.getExactChange(valueInCents);
+		List<Integer> correctChangeList = Arrays.asList(new Integer[]{5,2,3,0,5,3,0,7,0});
+		assertEquals("Calculated changeList disagrees with expected!", correctChangeList, changeList);
 	}
 
 	@Points(value=5)
@@ -302,7 +331,14 @@ public class ChangeMakerTestCases
 	@Test
 	public void calculateValueOfChangeList_144_89_55_34_21_13_8_5_3_2_1__0_0_0_0_0_0_0_3_2_1_0()
 	{
-		fail("Student needs to add code");
+		Set<Integer> denominationSet = getDenominationSet(new Integer[]{144,89,55,34,21,13,8,5,3,2,1});
+		List<Integer> coinCountList = Arrays.asList(0,0,0,0,0,0,0,3,2,1,0);
+
+		TEST_GOAL_MESSAGE = "Test " + getPrettyString(denominationSet) + ".calculateValueOfChangeList(" + coinCountList + ")";
+		changeMaker_STUDENT = getChangeMaker(denominationSet);
+
+		//TODO
+		assertTrue(changeMaker_STUDENT.calculateValueOfChangeList(coinCountList) == 23);
 	}
 	
 	@Points(value=5)
@@ -321,8 +357,49 @@ public class ChangeMakerTestCases
 	@Test
 	public void getExactChange_8000_400_20_1__492()
 	{
-		fail("Student needs to add code");
+		Set<Integer> denominationSet = getDenominationSet(new Integer[]{8000,400,20,1});
+		int valueInCents = 492;
+
+		TEST_GOAL_MESSAGE = "Test " + getPrettyString(denominationSet) + ".getExactChange(" + valueInCents + ")";
+		changeMaker_STUDENT = getChangeMaker(denominationSet);
+
+		List<Integer> changeList = changeMaker_STUDENT.getExactChange(valueInCents);
+		List<Integer> correctChangeList = Arrays.asList(new Integer[]{0,1,4,12});
+		assertEquals("Calculated changeList disagrees with expected!", correctChangeList, changeList);
 	}
+
+
+	@Points(value=5)
+	@Test
+	public void canMakeExactChange_11_7__1()
+	{
+		Set<Integer> denominationSet = getDenominationSet(new Integer[]{11,7});
+		int valueInCents = 1;
+		TEST_GOAL_MESSAGE = "Test " + getPrettyString(denominationSet) + ".canMakeExactChange(" + valueInCents + ")";
+		changeMaker_STUDENT = getChangeMaker(denominationSet);
+
+		assertFalse("ChangeMaker should be able to make change for " + valueInCents, changeMaker_STUDENT.canMakeExactChange(valueInCents));
+	}
+
+
+	@Points(value=5)
+	@Test
+	public void canMakeExactChange_11_7__2()
+	{
+		Set<Integer> denominationSet = getDenominationSet(new Integer[]{11,7});
+		int valueInCents = 2;
+		TEST_GOAL_MESSAGE = "Test " + getPrettyString(denominationSet) + ".canMakeExactChange(" + valueInCents + ")";
+		changeMaker_STUDENT = getChangeMaker(denominationSet);
+
+		assertFalse("ChangeMaker should be able to make change for " + valueInCents, changeMaker_STUDENT.canMakeExactChange(valueInCents));
+	}
+
+
+
+
+
+
+
 	
 	//STUDENT SHOULD ADD MANY OTHER TEST CASES
 	//WHAT HAS NOT BEEN TESTED?
