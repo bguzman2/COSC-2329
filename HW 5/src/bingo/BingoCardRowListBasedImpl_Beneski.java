@@ -27,6 +27,8 @@ public class BingoCardRowListBasedImpl_Beneski extends BingoCardRowListBased_Abs
 
     @Override
     public Integer getEntry(int row, int column) {
+        assert row <= ROW_COUNT;
+        assert column <= COLUMN_COUNT;
         List<Integer> rowList = rowListList.get(row - 1);
 
         if ((row == 3) && (column == 3))
@@ -42,13 +44,15 @@ public class BingoCardRowListBasedImpl_Beneski extends BingoCardRowListBased_Abs
 
     @Override
     public boolean contains(int number) {
-        Integer integerNumber = new Integer(number);
         boolean containsNumber = false;
+
         for (int i = 1; i <= ROW_COUNT; i++) {
             for (int j = 1; j <= COLUMN_COUNT; j++) {
                 System.out.println(getEntry(i, j));
 
-                if (getEntry(i, j) == integerNumber) {
+                if ((i == 3) && (j == 3))
+                    continue;
+                else if (getEntry(i, j) == number) {
                     containsNumber = true;
                 }
 
@@ -98,8 +102,7 @@ public class BingoCardRowListBasedImpl_Beneski extends BingoCardRowListBased_Abs
 
         int diagCounterTwo = 0;
         for (int i = 5; i > 0; i--) {
-            for(int j = 1; j <= COLUMN_COUNT; j++){
-                System.out.println("Checking Diag: " + i + " " + j);
+            for (int j = 1; j <= COLUMN_COUNT; j++) {
                 if (isMarked(i, j))
                     diagCounterTwo++;
             }
@@ -109,7 +112,6 @@ public class BingoCardRowListBasedImpl_Beneski extends BingoCardRowListBased_Abs
 
         if (diagCounterTwo == 5)
             winningCard = true;
-
 
 
         return winningCard;
@@ -122,20 +124,18 @@ public class BingoCardRowListBasedImpl_Beneski extends BingoCardRowListBased_Abs
         for (int i = 0; i < ROW_COUNT; i++) {
             for (int j = 0; j < COLUMN_COUNT; j++) {
 
-                System.out.println(i + " " + j);
-
                 try {
-                    outputString += " " + getEntry(i + 1, j + 1);
+                    Integer entry = getEntry(i + 1, j + 1);
+                    if (entry == null)
+                        outputString += " FS";
+                    else
+                        outputString += " " + entry;
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println(e);
                 }
-
-
             }
-
-
+            outputString += "\n";
         }
-
         return outputString;
     }
 }

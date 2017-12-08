@@ -16,11 +16,15 @@ public class BingoCardDiagonalListBasedImplTests_SUBSETFORSTUDENTS
 		Integer FS = BingoCard.FREE_SPACE;	//DEFINED PURELY SO THAT entries
 											//ARRAY IS EASY TO READ:
 		Integer[][] entries = new Integer[][]{
-				  {  1, 16, 31, 46, 61},
-				  {  4, 19, 34, 49, 64},
-				  {  7, 22, FS, 52, 67},
-				  { 10, 25, 40, 55, 70},
-				  { 13, 28, 43, 58, 73}
+				  {13},
+				  {30,14},
+				  {34,27,12},
+				  {59,41,29,7},
+				  {75,53,25,2},
+				  {73,57,35,23},
+				  {67,50,45},
+				  {61,52},
+				  {74}
 				};
 		
 		BingoCard bingoCard = getBingoCard(entries);
@@ -187,15 +191,15 @@ public class BingoCardDiagonalListBasedImplTests_SUBSETFORSTUDENTS
 	private static BingoCard getBingoCard(Integer[][] entries)
 	{
 		assert entries != null : "entries is null!";
-		assert entries.length == BingoCard.ROW_COUNT : "entries.length = " + entries.length + " <> " + BingoCard.ROW_COUNT + " = BingoCard.ROW_COUNT!";
+		//assert entries.length == BingoCard.ROW_COUNT : "entries.length = " + entries.length + " <> " + BingoCard.ROW_COUNT + " = BingoCard.ROW_COUNT!";
 		final int ROW_INDEX_CENTER = (BingoCard.ROW_COUNT - 1)/2;
 		final int COLUMN_INDEX_CENTER = (BingoCard.COLUMN_COUNT - 1)/2;
-		assert entries[ROW_INDEX_CENTER][COLUMN_INDEX_CENTER] == BingoCard.FREE_SPACE : "entries[" + ROW_INDEX_CENTER + "][" + COLUMN_INDEX_CENTER + "] <> " + BingoCard.FREE_SPACE  + " = BingoCard.FREE_SPACE!";
+		//assert entries[ROW_INDEX_CENTER][COLUMN_INDEX_CENTER] == BingoCard.FREE_SPACE : "entries[" + ROW_INDEX_CENTER + "][" + COLUMN_INDEX_CENTER + "] <> " + BingoCard.FREE_SPACE  + " = BingoCard.FREE_SPACE!";
 		
 		for(int i = 0; i < entries.length; i++)
 		{
 			Integer[] row_i_entries = entries[i];
-			assert row_i_entries.length == BingoCard.COLUMN_COUNT : "row_i_entries.length = " + row_i_entries.length + " <> " + BingoCard.COLUMN_COUNT + " = BingoCard.COLUMN_COUNT!";
+//			assert row_i_entries.length == BingoCard.COLUMN_COUNT : "row_i_entries.length = " + row_i_entries.length + " <> " + BingoCard.COLUMN_COUNT + " = BingoCard.COLUMN_COUNT!";
 		}
 		
 		//Student can write code to translate int[][] entries to a representative that is appropriate for one of their constructors
